@@ -36,6 +36,7 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem 'haml-rails'
 gem 'sgcop', github: 'SonicGarden/sgcop', branch: 'main'
 
 group :development, :test do
@@ -44,12 +45,12 @@ group :development, :test do
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem 'brakeman', require: false
-
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem 'rubocop-rails-omakase', require: false
 end
 
 group :development do
+  gem 'haml_lint'
+  # deviseの画面をhamlに変換する必要があるので残しておく
+  gem 'html2haml'
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
 end
