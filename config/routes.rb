@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admins do
+    root 'products#index'
+  end
   devise_for :admins
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
