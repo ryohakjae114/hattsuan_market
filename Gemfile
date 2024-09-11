@@ -2,11 +2,13 @@ source 'https://rubygems.org'
 
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
+gem 'devise'
 gem 'haml-rails'
 gem 'jsbundling-rails'
 gem 'pg'
 gem 'puma'
 gem 'rails'
+gem 'rails-i18n'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
