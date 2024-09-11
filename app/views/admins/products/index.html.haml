@@ -1,7 +1,9 @@
 %h1= t('.title')
 
+= paginate @products
 .row
   - @products.each do |product|
     .col-3.border.d-flex.flex-column.justify-content-between
       .admins-products-index-product= product.name
       = number_to_currency(product.price_without_tax)
+= paginate @products
