@@ -3,3 +3,6 @@ ja:
     products:
       index:
         title: "商品一覧"
+    sessions:
+      new:
+        title: "ログイン"
