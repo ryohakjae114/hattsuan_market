@@ -25,11 +25,10 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-    models:
-      admin: ユーザー
-      product: 商品
-    attributes:
       product:
         name: 商品名
         price_without_tax: 金額(税抜)
         description: 商品説明
+    models:
+      admin: 管理者
+      product: 商品
