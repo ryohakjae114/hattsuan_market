@@ -26,4 +26,4 @@ ja:
         unlock_token: ロック解除用トークン
         updated_at: 更新日
     models:
-      admin: ユーザー
+      admin: 管理者
