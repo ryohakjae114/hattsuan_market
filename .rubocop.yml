@@ -1,2 +1,5 @@
+Metrics/BlockLength:
+  Exclude:
+    - config/initializers/simple_form_bootstrap.rb
 inherit_gem:
   sgcop: rails/rubocop.yml
