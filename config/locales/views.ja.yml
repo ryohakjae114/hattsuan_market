@@ -5,6 +5,8 @@ ja:
     products:
       index:
         title: "商品一覧"
+      new:
+        title: "商品登録"
     sessions:
       new:
         title: "ログイン"
