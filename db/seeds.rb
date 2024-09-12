@@ -1,4 +1,4 @@
-20.times do
+100.times do
   name = Faker::Lorem.paragraph_by_chars(number: rand(5..100))
   description = Faker::Lorem.paragraph_by_chars(number: rand(20..200))
   price_without_tax = rand(0..200_000)

@@ -2,3 +2,9 @@ ja:
   activerecord:
     models:
       admin: ユーザー
+      product: 商品
+    attributes:
+      product:
+        name: 商品名
+        price_without_tax: 金額(税抜)
+        description: 商品説明
