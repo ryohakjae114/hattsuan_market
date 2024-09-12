@@ -2,7 +2,7 @@
 
 - if @products.present?
   = paginate @products
-  %table.table.table-bordered.my-3
+  %table.text-nowrap.table.table-bordered.my-3
     %tr
       %th= Product.human_attribute_name(:name)
       %th= Product.human_attribute_name(:price_without_tax)
