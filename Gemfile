@@ -17,17 +17,19 @@ gem 'turbo-rails'
 
 group :development, :test do
   gem 'brakeman', require: false
+  gem 'brakeman_translate_checkstyle_format'
+  gem 'bundler-audit'
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
+  gem 'sgcop', github: 'SonicGarden/sgcop', branch: 'main'
 end
 
 group :development do
   gem 'haml_lint'
   # deviseの画面をhamlに変換する必要があるので残しておく
   gem 'html2haml'
-  gem 'sgcop', github: 'SonicGarden/sgcop', branch: 'main'
   gem 'web-console'
 end
 
