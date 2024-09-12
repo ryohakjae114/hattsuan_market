@@ -1,4 +1,6 @@
 ja:
+  general:
+    none: "なし"
   admins:
     products:
       index:

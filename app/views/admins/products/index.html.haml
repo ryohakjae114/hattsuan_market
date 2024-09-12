@@ -1,9 +1,15 @@
 %h1= t('.title')
 
-= paginate @products
-.row
-  - @products.each do |product|
-    .col-3.border.d-flex.flex-column.justify-content-between
-      .admins-products-index-product= product.name
-      = number_to_currency(product.price_without_tax)
-= paginate @products
+- if @products.present?
+  = paginate @products
+  %table.table.table-bordered.my-3
+    %tr
+      %th= Product.human_attribute_name(:name)
+      %th= Product.human_attribute_name(:price_without_tax)
+    - @products.each do |product|
+      %tr
+        %td.admins-products-index-product= product.name
+        %td= number_to_currency(product.price_without_tax)
+  = paginate @products
+- else
+  = t('general.none')
