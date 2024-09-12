@@ -97,7 +97,12 @@ GEM
       msgpack (~> 1.2)
     brakeman (6.2.1)
       racc
+    brakeman_translate_checkstyle_format (0.0.1)
+      thor
     builder (3.3.0)
+    bundler-audit (0.9.2)
+      bundler (>= 1.2.0, < 3)
+      thor (~> 1.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -391,6 +396,8 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   brakeman
+  brakeman_translate_checkstyle_format
+  bundler-audit
   capybara
   cssbundling-rails
   debug
