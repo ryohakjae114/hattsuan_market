@@ -14,6 +14,14 @@
     %link{ href: '/icon.png', rel: 'apple-touch-icon' }/
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module'
-  %body.container
-    = render 'layouts/flash_message'
-    = yield
+  %body
+    %nav.navbar.bg-body-tertiary
+      .container-fluid
+        = link_to 'hattsuan_market', root_path, class: 'navbar-brand'
+        - if user_signed_in?
+          = link_to t('devise.sessions.log_out'), destroy_user_session_path, data: { turbo_method: :delete }
+        - else
+          = link_to t('devise.sessions.new.sign_in'), new_user_session_path
+    .container
+      = render 'layouts/flash_message'
+      = yield
