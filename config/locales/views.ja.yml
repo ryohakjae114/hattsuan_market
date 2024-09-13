@@ -8,3 +8,6 @@ ja:
     sessions:
       new:
         title: "ログイン"
+  products:
+    index:
+      title: "商品一覧"
