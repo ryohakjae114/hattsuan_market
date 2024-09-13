@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bootsnap', require: false
+gem 'bullet'
 gem 'cssbundling-rails'
 gem 'devise'
 gem 'haml-rails'
