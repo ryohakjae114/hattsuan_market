@@ -5,6 +5,6 @@
 .mt-3.fw-bold.fs-4= Product.human_attribute_name(:name)
 .fs-4.my-3= @product.name
 .fw-bold.fs-4= Product.human_attribute_name(:price_without_tax)
-.fs-4.my-3= number_to_currency(@product.price_without_tax)
+.fs-4.my-3= t('products.index.price_with_tax', price: number_to_currency(@product.price_with_tax))
 .fw-bold.fs-4= Product.human_attribute_name(:description)
 .fs-4.my-3= @product.description

@@ -9,11 +9,11 @@ RSpec.describe 'Products', type: :system do
     visit root_path
     expect(page).to have_content('商品一覧')
     expect(page).to have_content('ねるねるねーるね')
-    expect(page).to have_content('100円')
+    expect(page).to have_content('110円')
     expect(page).to have_content('ポテチ')
-    expect(page).to have_content('500円')
+    expect(page).to have_content('550円')
     expect(page).to have_content('ナナチキ')
-    expect(page).to have_content('200円')
+    expect(page).to have_content('220円')
   end
 
   it '商品詳細ページを閲覧できること' do
@@ -22,6 +22,6 @@ RSpec.describe 'Products', type: :system do
     click_on 'ねるねるねーるね'
     expect(page).to have_content('ねるねるねーるね')
     expect(page).to have_content('ネバネバだーよね')
-    expect(page).to have_content('100円')
+    expect(page).to have_content('110円')
   end
 end

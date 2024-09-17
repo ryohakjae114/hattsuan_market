@@ -5,6 +5,6 @@ class Product < ApplicationRecord
   validates :description, length: { maximum: 200 }
 
   def price_with_tax
-    (self.price_without_tax * (1 + TAX)).ceil
+    (self.price_without_tax * (1 + TAX))
   end
 end
