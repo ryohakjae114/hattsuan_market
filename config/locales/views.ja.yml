@@ -8,3 +8,9 @@ ja:
     sessions:
       new:
         title: "ログイン"
+  products:
+    index:
+      title: "商品一覧"
+    show:
+      title: "商品詳細"
+      to_products_index: "商品一覧へ戻る"

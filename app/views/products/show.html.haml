@@ -1,0 +1,10 @@
+%h1= t('.title')
+
+= link_to t('.to_products_index'), root_path, class: 'btn btn-outline-dark my-5'
+
+.mt-3.fw-bold.fs-4= Product.human_attribute_name(:name)
+.fs-4.my-3= @product.name
+.fw-bold.fs-4= Product.human_attribute_name(:price_without_tax)
+.fs-4.my-3= number_to_currency(@product.price_without_tax)
+.fw-bold.fs-4= Product.human_attribute_name(:description)
+.fs-4.my-3= @product.description

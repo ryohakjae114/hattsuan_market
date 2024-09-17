@@ -1,0 +1,8 @@
+%h1= t('.title')
+= paginate @products
+.row
+  - @products.each do |product|
+    = link_to product_path(product), class: 'col-3 border d-flex flex-column justify-content-between text-decoration-none text-dark' do
+      .products-index-product= product.name
+      = number_to_currency(product.price_without_tax)
+= paginate @products
