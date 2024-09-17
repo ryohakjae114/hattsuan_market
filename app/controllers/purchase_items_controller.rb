@@ -1,4 +1,4 @@
-class PurchasesItemsController < ApplicationController
+class PurchaseItemsController < ApplicationController
   def create
     @purchase = current_user.purchases.find_or_initialize_by(purchase_at: nil)
     @purchase.build(purchase_item_params)
