@@ -1,4 +1,4 @@
-class PurchasesController < ApplicationController
+class PurchasesItemsController < ApplicationController
   def add_cart
     @purchase = current_user.purchases.find_or_initialize_by(purchase_at: nil)
     @purchase.build(purchase_item_params)
