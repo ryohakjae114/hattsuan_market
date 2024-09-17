@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_17_052332) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_17_062549) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_17_052332) do
     t.integer "quantity", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "product_id", null: false
+    t.index ["product_id"], name: "index_purchase_items_on_product_id"
     t.index ["purchase_id"], name: "index_purchase_items_on_purchase_id"
   end
 
@@ -56,6 +58,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_17_052332) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "purchase_items", "products"
   add_foreign_key "purchase_items", "purchases"
   add_foreign_key "purchases", "users"
 end
