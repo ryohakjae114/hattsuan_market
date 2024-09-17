@@ -10,5 +10,6 @@
 .fs-4.my-3= @product.description
 
 = simple_form_for @purchase_item do |f|
+  = f.input :product_id, as: :hidden, input_html: { value: @purchase_item.product_id }
   = f.input :quantity, input_html: { class: 'w-auto' }
   = f.button :submit, t('.add_cart')
