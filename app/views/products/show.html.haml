@@ -8,3 +8,7 @@
 .fs-4.my-3= t('products.index.price_with_tax', price: number_to_currency(@product.price_with_tax))
 .fw-bold.fs-4= Product.human_attribute_name(:description)
 .fs-4.my-3= @product.description
+
+= simple_form_for @purchase_item do |f|
+  = f.input :quantity, input_html: { class: 'w-auto' }
+  = f.button :submit, t('.add_cart')
