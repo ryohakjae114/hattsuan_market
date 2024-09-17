@@ -4,5 +4,5 @@
   - @products.each do |product|
     = link_to product_path(product), class: 'col-3 border d-flex flex-column justify-content-between text-decoration-none text-dark' do
       .products-index-product= product.name
-      = number_to_currency(product.price_without_tax)
+      = t('products.index.price_with_tax', price: number_to_currency(product.price_with_tax))
 = paginate @products
