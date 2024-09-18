@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_17_062549) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_17_052332) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,30 +23,29 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_17_062549) do
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name", limit: 100, default: "", null: false
     t.integer "price_without_tax", default: 0
     t.string "description", limit: 200, default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "purchase_items", force: :cascade do |t|
-    t.bigint "purchase_id", null: false
-    t.integer "quantity", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "product_id", null: false
-    t.index ["product_id"], name: "index_purchase_items_on_product_id"
-    t.index ["purchase_id"], name: "index_purchase_items_on_purchase_id"
-  end
-
-  create_table "purchases", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.datetime "purchase_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,7 +57,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_17_062549) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "purchase_items", "products"
-  add_foreign_key "purchase_items", "purchases"
-  add_foreign_key "purchases", "users"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "users"
 end
