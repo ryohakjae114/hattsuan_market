@@ -1,4 +1,6 @@
 ja:
+  menus:
+    order: "注文"
   general:
     none: "なし"
   admins:
