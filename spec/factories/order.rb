@@ -1,6 +1,5 @@
 FactoryBot.define do
-  factory :purchase do
+  factory :order do
     user_id { nil }
-    purchase_at { nil }
   end
 end

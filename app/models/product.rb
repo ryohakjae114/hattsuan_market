@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  has_many :purchase_items, dependent: :destroy
+  has_many :order_items, dependent: :destroy
 
   TAX = 0.1
   validates :name, presence: true, length: { maximum: 100 }

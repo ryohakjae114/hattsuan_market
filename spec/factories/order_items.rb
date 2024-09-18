@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :purchase_item do
-    purchase { nil }
+  factory :order_item do
+    order { nil }
     quantity { 1 }
   end
 end

@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @purchase_item = PurchaseItem.new(product_id: @product.id)
+    @order_item = OrderItem.new(product_id: @product.id)
   end
 
   private
