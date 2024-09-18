@@ -20,6 +20,7 @@ RSpec.describe 'Products', type: :system do
     create :product, name: 'ねるねるねーるね', description: 'ネバネバだーよね', price_without_tax: 100
     visit root_path
     click_on 'ねるねるねーるね'
+    expect(page).to have_content('商品詳細')
     expect(page).to have_content('ねるねるねーるね')
     expect(page).to have_content('ネバネバだーよね')
     expect(page).to have_content('110円(税込)')
