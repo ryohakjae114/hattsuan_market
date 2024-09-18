@@ -1,15 +1,15 @@
 %h1= t('.title')
 
 - if @order_items.present?
-  = paginate @order_items
   %table.table.table-bordered.my-3
     %tr.text-nowrap
       %th= Product.human_attribute_name(:name)
-      %th= Product.human_attribute_name(:price_without_tax)
-    - @order_items.each do |product|
+      %th= OrderItem.human_attribute_name(:quantity)
+      %th= t('.price_with_tax')
+    - @order_items.each do |order|
       %tr
-        %td= product.name
-        %td.text-nowrap= number_to_currency(product.price_without_tax)
-  = paginate @order_items
+        %td.text-nowrap= link_to order.product.name, product_path(order.product)
+        %td.text-nowrap= order.quantity
+        %td.text-nowrap= number_to_currency(order.product.price_with_tax * order.quantity)
 - else
   = t('general.none')

@@ -19,3 +19,4 @@ ja:
   order_items:
     index:
       title: "カート"
+      price_with_tax: "税込価格"
