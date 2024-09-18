@@ -1,2 +1,15 @@
-%h1 OrderItems#index
-%p Find me in app/views/order_items/index.html.haml
+%h1= t('.title')
+
+- if @order_items.present?
+  = paginate @order_items
+  %table.table.table-bordered.my-3
+    %tr.text-nowrap
+      %th= Product.human_attribute_name(:name)
+      %th= Product.human_attribute_name(:price_without_tax)
+    - @order_items.each do |product|
+      %tr
+        %td= product.name
+        %td.text-nowrap= number_to_currency(product.price_without_tax)
+  = paginate @order_items
+- else
+  = t('general.none')
