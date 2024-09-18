@@ -1,5 +1,6 @@
 ja:
   menus:
+    product: "商品"
     order: "注文"
   general:
     none: "なし"
