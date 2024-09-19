@@ -4,7 +4,7 @@
   %table.table.table-bcarted.my-3
     %tr.text-nowrap
       %th= Product.human_attribute_name(:name)
-      %th= OrderItem.human_attribute_name(:quantity)
+      %th= CartItem.human_attribute_name(:quantity)
       %th= t('.price_with_tax')
     - @cart_items.each do |cart_item|
       %tr
