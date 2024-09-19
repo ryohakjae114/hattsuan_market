@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'products#index'
   resources :products, only: [:show]
   resources :cart_items, only: %i[index create]
+  resource :cart, only: [:show]
 
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
