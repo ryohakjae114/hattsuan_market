@@ -4,8 +4,7 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    current_cart.cart_items.build(cart_item_params)
-    @cart.save!
+    current_cart.cart_items.create!(cart_item_params)
     redirect_to root_url, notice: t('controller.created')
   end
 
