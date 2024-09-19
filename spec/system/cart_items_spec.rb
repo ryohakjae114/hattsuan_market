@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'CartItems', type: :system do
   context 'ログイン時' do
-    let!(:hakjae) { create(:user, email: 'hattsuan@example.com', password: '123456123456', password_confirmation: '123456123456') }
+    let!(:hakjae) { create(:user, email: 'hattsuan@example.com') }
     let!(:nerune) { create :product, name: 'ねるねるねーるね', price_without_tax: 100 }
 
     before do
