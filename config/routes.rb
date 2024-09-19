@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'products#index'
   resources :products, only: [:show]
-  resources :cart_items, only: %i[index create]
+  resources :cart_items, only: %i[create]
   resource :cart, only: [:show]
 
   devise_for :admins, controllers: {
