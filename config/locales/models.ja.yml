@@ -53,7 +53,7 @@ ja:
         name: 商品名
         price_without_tax: 金額(税抜)
         description: 商品説明
-      order_item:
+      cart_item:
         quantity: 個数
     models:
       admin: 管理者

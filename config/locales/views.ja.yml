@@ -1,7 +1,7 @@
 ja:
   menus:
     product: "商品"
-    order: "注文"
+    cart: "カート"
   general:
     none: "なし"
   admins:
@@ -19,7 +19,7 @@ ja:
       title: "商品詳細"
       to_products_index: "商品一覧へ戻る"
       add_cart: "カートに追加"
-  order_items:
+  cart_items:
     index:
       title: "カート"
       price_with_tax: "税込価格"

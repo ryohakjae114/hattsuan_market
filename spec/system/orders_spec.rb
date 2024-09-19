@@ -14,7 +14,7 @@ RSpec.describe 'Orders', type: :system do
       fill_in '個数',	with: 2
       click_on 'カートに追加'
       expect(page).to have_content '新規登録しました'
-      visit order_items_path
+      visit cart_items_path
       expect(page).to have_content 'ねるねるねーるね'
       expect(page).to have_content '220円'
     end

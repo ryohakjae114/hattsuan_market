@@ -3,11 +3,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show]
 
   def index
-    @products = Product.order(:created_at).page(params[:page]).per(12)
+    @products = Product.cart(:created_at).page(params[:page]).per(12)
   end
 
   def show
-    @order_item = OrderItem.new(product_id: @product.id)
+    @cart_item = OrderItem.new(product_id: @product.id)
   end
 
   private
