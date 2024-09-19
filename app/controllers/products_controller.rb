@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @cart_item = CartItem.new(product_id: @product.id)
+    @cart_item = current_cart.cart_items.find_or_initialize_by(product_id: @product.id)
   end
 
   private

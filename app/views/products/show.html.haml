@@ -12,4 +12,4 @@
 = simple_form_for @cart_item do |f|
   = f.input :product_id, as: :hidden, input_html: { value: @cart_item.product_id }
   = f.input :quantity, input_html: { class: 'w-auto' }
-  = f.button :submit, t('.add_cart')
+  = f.button :submit, @cart_item.persisted? ? t('.update_cart') : t('.add_cart')
