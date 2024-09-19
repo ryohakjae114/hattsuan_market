@@ -11,7 +11,7 @@ RSpec.describe 'CartItems', type: :system do
 
     it '商品をカートに追加できる' do
       visit product_path(nerune)
-      fill_in '個数',	with: 2
+      fill_in '個数', with: 2
       click_on 'カートに追加'
       expect(page).to have_content '新規登録しました'
       visit cart_items_path
