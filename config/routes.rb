@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :products, only: [:show]
   resource :cart, only: [:show]
   scope module: :cart do
-    resources :cart_items, only: %i[create]
+    resources :cart_items, only: %i[create update]
   end
 
   devise_for :admins, controllers: {
