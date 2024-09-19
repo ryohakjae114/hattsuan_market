@@ -1,4 +1,4 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :rememberable, :validatable
-  has_one :order, dependent: :destroy
+  has_one :cart, dependent: :destroy
 end
