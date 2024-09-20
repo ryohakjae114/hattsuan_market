@@ -12,7 +12,7 @@ class Cart::CartItemsController < ApplicationController
 
   def destroy
     @cart_item.destroy!
-    redirect_to cart_path(@cart_item.product), notice: t('controller.destroyed'), status: :see_other
+    redirect_to cart_path, notice: t('controller.destroyed'), status: :see_other
   end
 
   private
