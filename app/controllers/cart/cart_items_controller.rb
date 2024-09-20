@@ -1,5 +1,5 @@
 class Cart::CartItemsController < ApplicationController
-  before_action :set_cart_item, only: [:update]
+  before_action :set_cart_item, only: %i[update destroy]
   def create
     current_cart.cart_items.create!(cart_item_params)
     redirect_to root_url, notice: t('controller.created')
@@ -8,6 +8,11 @@ class Cart::CartItemsController < ApplicationController
   def update
     @cart_item.update!(cart_item_params)
     redirect_to product_path(@cart_item.product), notice: t('controller.updated'), status: :see_other
+  end
+
+  def destroy
+    @cart_item.destroy!
+    redirect_to cart_path(@cart_item.product), notice: t('controller.destroyed'), status: :see_other
   end
 
   private
