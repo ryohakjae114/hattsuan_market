@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!
   before_action :set_product, only: [:show]
 
   def index
@@ -6,6 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @cart_item = CartItem.new(product_id: @product.id)
   end
 
   private

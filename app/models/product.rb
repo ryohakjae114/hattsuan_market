@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  has_many :cart_items, dependent: :destroy
+
   TAX = 0.1
   validates :name, presence: true, length: { maximum: 100 }
   validates :price_without_tax, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
