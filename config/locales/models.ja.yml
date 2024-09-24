@@ -56,6 +56,8 @@ ja:
       cart_item:
         quantity: 個数
       order:
+        id: "注文ID"
+        created_at: "注文日時"
         delivery_on: "配達日"
         delivery_time_zone: "配達時間帯"
         delivery_address: "お届け先"
