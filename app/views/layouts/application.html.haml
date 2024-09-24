@@ -18,7 +18,7 @@
     %nav.navbar.bg-body-tertiary
       .container-fluid
         = link_to 'hattsuan_market', root_path, class: 'navbar-brand'
-        = link_to t('menus.product'), root_path
+        = link_to t('products.index.title'), root_path
         - if user_signed_in?
           = link_to t('carts.show.title'), cart_path
           = link_to t('orders.index.title')
