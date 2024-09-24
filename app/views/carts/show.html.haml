@@ -1,6 +1,7 @@
 %h1= t('.title')
 
 - if @cart_items.present?
+  = link_to t('.to_order'), new_order_path, class: 'btn btn-primary'
   %table.table.table-bcarted.my-3
     %tr.text-nowrap
       %th= Product.human_attribute_name(:name)

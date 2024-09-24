@@ -24,3 +24,8 @@ ja:
     show:
       title: "カート"
       price_with_tax: "税込価格"
+      to_order: "購入する"
+  orders:
+    new:
+      title: "購入"
+      purchase: "購入する"
