@@ -4,3 +4,5 @@ ja:
     updated: "更新しました"
     destroyed: "削除しました"
     published: "公開しました"
+  orders:
+    ordered: "注文しました"
