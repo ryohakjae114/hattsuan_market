@@ -26,6 +26,8 @@ ja:
       price_with_tax: "税込価格"
       to_order: "購入する"
   orders:
+    index:
+      title: "注文一覧"
     new:
       title: "購入"
       purchase: "購入する"
