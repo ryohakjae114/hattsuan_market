@@ -6,6 +6,10 @@ class Order < ApplicationRecord
 
   belongs_to :user
 
+  before_create do
+    user.cart.destroy!
+  end
+
   validates :delivery_on, presence: true, comparison: { greater_than_or_equal_to: -> { Time.zone.today } }
   validates :delivery_time_zone, presence: true
   validates :delivery_address, presence: true, length: { maximum: 200 }

@@ -24,10 +24,10 @@ ja:
     show:
       title: "カート"
       price_with_tax: "税込価格"
-      to_order: "購入する"
+      to_order: "注文する"
   orders:
     index:
       title: "注文一覧"
     new:
-      title: "購入"
-      purchase: "購入する"
+      title: "注文"
+      purchase: "注文する"
