@@ -36,9 +36,8 @@ RSpec.describe 'CartItems', type: :system do
     end
 
     it 'カートに入った商品を削除できる' do
-      create(:cart_item, cart: hakjae_cart, product_id: nerune.id, quantity: 1)
       visit cart_path
-      within '.ねるねるねーるね' do
+      within ".cart_item_#{cart_item.id}" do
         click_on '削除'
       end
       expect(page).to have_content('削除しました')
