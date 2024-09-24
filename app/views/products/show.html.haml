@@ -9,7 +9,10 @@
 .fw-bold.fs-4= Product.human_attribute_name(:description)
 .fs-4.my-3= @product.description
 
-= simple_form_for [:cart, @cart_item] do |f|
-  = f.input :product_id, as: :hidden, input_html: { value: @cart_item.product_id }
-  = f.input :quantity, input_html: { class: 'w-auto' }
-  = f.button :submit, t('.add_cart')
+- if @cart_item
+  = simple_form_for [:cart, @cart_item] do |f|
+    = f.input :product_id, as: :hidden, input_html: { value: @product.id }
+    = f.input :quantity, input_html: { class: 'w-auto' }
+    = f.button :submit, @cart_item.persisted? ? t('.update_cart') : t('.add_cart')
+- else
+  = link_to t('.add_cart'), user_session_path, class: 'btn btn-primary'

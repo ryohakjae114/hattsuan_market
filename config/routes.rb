@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'products#index'
   resources :products, only: [:show]
   resource :cart, only: [:show] do
-    resources :cart_items, module: :cart, only: %i[create]
+    resources :cart_items, module: :cart, only: %i[create update]
   end
 
   devise_for :admins, controllers: {

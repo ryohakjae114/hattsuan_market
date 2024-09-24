@@ -7,7 +7,7 @@
       %th= CartItem.human_attribute_name(:quantity)
       %th= t('.price_with_tax')
     - @cart_items.each do |cart_item|
-      %tr
+      %tr{ class: "cart_item_#{cart_item.id}" }
         %td= link_to cart_item.product.name, product_path(cart_item.product)
         %td.text-nowrap= cart_item.quantity
         %td.text-nowrap= number_to_currency(cart_item.price_with_tax)
