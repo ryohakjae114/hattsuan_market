@@ -14,17 +14,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_080437) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "Orders", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.date "delivery_on", default: -> { "CURRENT_DATE" }, null: false
-    t.string "delivery_time_zone", limit: 20, default: "", null: false
-    t.string "delivery_address", limit: 200, default: "", null: false
-    t.string "addressee_name", limit: 50, default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_Orders_on_user_id"
-  end
-
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -67,6 +56,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_080437) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "delivery_on", default: -> { "CURRENT_DATE" }, null: false
+    t.string "delivery_time_zone", limit: 20, default: "", null: false
+    t.string "delivery_address", limit: 200, default: "", null: false
+    t.string "addressee_name", limit: 50, default: "", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -87,7 +80,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_080437) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "Orders", "users"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "users"
