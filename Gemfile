@@ -4,6 +4,7 @@ gem 'bootsnap', require: false
 gem 'bullet'
 gem 'cssbundling-rails'
 gem 'devise'
+gem 'enumerize'
 gem 'haml-rails'
 gem 'jsbundling-rails'
 gem 'kaminari'
