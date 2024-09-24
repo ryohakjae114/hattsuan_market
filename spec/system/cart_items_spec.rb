@@ -37,9 +37,11 @@ RSpec.describe 'CartItems', type: :system do
 
     it 'カートに入った商品を削除できる' do
       visit cart_path
-      within ".cart_item_#{cart_item.id}" do
-        click_on '削除'
-      end
+      expect do
+        within ".cart_item_#{cart_item.id}" do
+          click_on '削除'
+        end
+      end.to change(hakjae_cart.cart_items, :count).by(-1)
       expect(page).to have_content('削除しました')
       expect(page).not_to have_content('.ねるねるねーるね')
     end
