@@ -1,6 +1,6 @@
 %h1= t('.title')
 = simple_form_for @order do |f|
-  = f.input :delivery_on
+  = f.input :delivery_on, hint: t('.delivery_on_hint')
   = f.input :delivery_time_zone, collection: delivery_time_zone_option, include_blank: true, selected: '08-12'
   = f.input :delivery_address
   = f.input :addressee_name

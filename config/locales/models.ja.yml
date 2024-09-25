@@ -67,3 +67,7 @@ ja:
       user: ユーザ
       product: 商品
       order: 注文
+  errors:
+    models:
+      order:
+        delivery_on_cant_delivery: "配達可能な日付を選択してください"
