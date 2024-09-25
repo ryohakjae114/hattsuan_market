@@ -106,6 +106,9 @@ GEM
     bundler-audit (0.9.2)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
+    business_time (0.13.0)
+      activesupport (>= 3.2.0)
+      tzinfo
     capybara (3.40.0)
       addressable
       matrix
@@ -403,6 +406,7 @@ DEPENDENCIES
   brakeman_translate_checkstyle_format
   bullet
   bundler-audit
+  business_time
   capybara
   cssbundling-rails
   debug
