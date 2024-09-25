@@ -5,10 +5,15 @@
     %thead
       %th= Order.human_attribute_name(:id)
       %th= Order.human_attribute_name(:created_at)
+      %th= Order.human_attribute_name(:delivery_on)
+      %th= Order.human_attribute_name(:delivery_time_zone)
+
     - @orders.each do |order|
       %tbody
       %tr
         %td= order.id
         %td= l order.created_at
+        %td= order.delivery_on
+        %td= order.delivery_time_zone
 - else
   = t('general.none')
