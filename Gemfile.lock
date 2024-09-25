@@ -1,12 +1,15 @@
 GIT
   remote: https://github.com/SonicGarden/sgcop.git
   revision: 4420fccc6504decf946cfd851c89da4d54a05241
+  revision: 4420fccc6504decf946cfd851c89da4d54a05241
   branch: main
   specs:
+    sgcop (1.1.4)
     sgcop (1.1.4)
       rubocop (~> 1.66.0)
       rubocop-capybara (~> 2.21.0)
       rubocop-factory_bot (~> 2.26.0)
+      rubocop-performance (~> 1.22.1)
       rubocop-performance (~> 1.22.1)
       rubocop-rails (~> 2.26.0)
       rubocop-rake (~> 0.6.0)
@@ -166,6 +169,7 @@ GEM
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
     i18n (1.14.6)
+    i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
     irb (1.14.0)
@@ -232,6 +236,8 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
+    puma (6.4.3)
+    public_suffix (5.0.5)
     puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.8.1)
@@ -320,6 +326,7 @@ GEM
     rubocop-factory_bot (2.26.1)
       rubocop (~> 1.61)
     rubocop-performance (1.22.1)
+    rubocop-performance (1.22.1)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
     rubocop-rails (2.26.2)
@@ -340,6 +347,7 @@ GEM
       sexp_processor (~> 4.16)
     rubyzip (2.3.2)
     securerandom (0.3.1)
+    selenium-webdriver (4.25.0)
     selenium-webdriver (4.25.0)
       base64 (~> 0.2)
       logger (~> 1.4)
@@ -366,10 +374,12 @@ GEM
     tilt (2.4.0)
     timeout (0.4.1)
     turbo-rails (2.0.10)
+    turbo-rails (2.0.10)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    unicode-display_width (2.6.0)
     unicode-display_width (2.6.0)
     uniform_notifier (1.16.0)
     useragent (0.16.10)
