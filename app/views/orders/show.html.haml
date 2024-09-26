@@ -1,0 +1,16 @@
+%h1= t('.title')
+
+%table.table
+  %thead
+    %th= Order.human_attribute_name(:id)
+    %th= Order.human_attribute_name(:created_at)
+    %th= Order.human_attribute_name(:addressee_name)
+    %th= Order.human_attribute_name(:delivery_on)
+    %th= Order.human_attribute_name(:delivery_time_zone)
+  %tbody
+    %tr
+      %td= @order.id
+      %td= l @order.created_at
+      %td= @order.addressee_name
+      %td= @order.delivery_on
+      %td= @order.delivery_time_zone

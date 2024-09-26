@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :set_order, only: %i[show]
+
   def index
     @orders = current_user.orders.order(created_at: :desc)
   end
@@ -16,7 +18,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  def show
+    @order
+  end
+
   private
+
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
   def order_params
     params.require(:order).permit(:delivery_on, :delivery_time_zone, :delivery_address, :addressee_name)

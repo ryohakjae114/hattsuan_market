@@ -32,3 +32,5 @@ ja:
       title: "注文"
       purchase: "注文する"
       delivery_on_hint: "3営業日後（営業日: 月-金）から14営業日までを指定してください"
+    show:
+      title: "注文詳細"
