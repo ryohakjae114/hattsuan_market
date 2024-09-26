@@ -5,8 +5,14 @@ class Order < ApplicationRecord
   enumerize :delivery_time_zone, in: AVAILABLE_DELIVERY_TIME_ZONES
 
   belongs_to :user
+  has_many :order_items, dependent: :destroy
+  accepts_nested_attributes_for :order_items, allow_destroy: true
 
   before_create do
+    product_tax = TAX
+    user.cart.cart_items.each do |cart_item|
+      order_items.build(product_id: cart_item.product_id, quantity: cart_item.quantity, price_with_tax: cart_item.price_with_tax * (1 + product_tax))
+    end
     user.cart.destroy!
   end
 
