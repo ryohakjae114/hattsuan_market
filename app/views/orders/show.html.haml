@@ -14,3 +14,15 @@
       %td= @order.addressee_name
       %td= @order.delivery_on
       %td= @order.delivery_time_zone
+%h2= t('.orders')
+%table.table
+  %thead
+    %th= Product.human_attribute_name(:name)
+    %th= OrderItem.human_attribute_name(:quantity)
+    %th= OrderItem.human_attribute_name(:price_with_tax)
+  %tbody
+    - @order.order_items.each do |order_item|
+      %tr
+        %td= order_item.product.name
+        %td= order_item.quantity
+        %td= number_to_currency order_item.price_with_tax
