@@ -5,10 +5,10 @@
     %thead
       %th= Order.human_attribute_name(:id)
       %th= Order.human_attribute_name(:created_at)
-    - @orders.each do |order|
-      %tbody
-      %tr
-        %td= order.id
-        %td= l order.created_at
+    %tbody
+      - @orders.each do |order|
+        %tr
+          %td= order.id
+          %td= l order.created_at
 - else
   = t('general.none')
