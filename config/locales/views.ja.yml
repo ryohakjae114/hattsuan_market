@@ -1,7 +1,7 @@
 ja:
-  menus:
-    product: "商品"
-    cart: "カート"
+  time:
+    formats:
+      default: "%Y年%m月%d日 %H時%M分"
   general:
     none: "なし"
   admins:
@@ -24,3 +24,10 @@ ja:
     show:
       title: "カート"
       price_with_tax: "税込価格"
+      to_order: "注文する"
+  orders:
+    index:
+      title: "注文一覧"
+    new:
+      title: "注文"
+      purchase: "注文する"
