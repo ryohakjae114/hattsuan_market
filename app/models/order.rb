@@ -25,6 +25,7 @@ class Order < ApplicationRecord
   validates :addressee_name, presence: true, length: { maximum: 50 }
   validates :product_tax, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :postage, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :delivery_fee, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validate :available_date_of_delivery
 
   def self.available_dates_of_delivery
@@ -45,7 +46,7 @@ class Order < ApplicationRecord
     end
   end
 
-  def set_postage
+  def set_postage_and_delivery_fee
     update(postage: 500 * (order_items.count.to_f / 5).ceil)
   end
 end
