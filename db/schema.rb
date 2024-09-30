@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_30_055226) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_30_064539) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_30_055226) do
     t.string "delivery_address", limit: 200, default: "", null: false
     t.string "addressee_name", limit: 50, default: "", null: false
     t.float "product_tax", default: 0.0, null: false
-    t.integer "box_price", default: 0, null: false
+    t.integer "postage", default: 0, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

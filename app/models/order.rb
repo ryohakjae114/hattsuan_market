@@ -11,12 +11,12 @@ class Order < ApplicationRecord
   before_create do
     self.product_tax = PRODUCT_TAX
     set_order_items
-    set_box_price
+    set_postage
     user.cart.destroy!
   end
 
   after_create do
-    set_box_price
+    set_postage
   end
 
   validates :delivery_on, presence: true, comparison: { greater_than_or_equal_to: -> { Time.zone.today } }
@@ -24,7 +24,7 @@ class Order < ApplicationRecord
   validates :delivery_address, presence: true, length: { maximum: 200 }
   validates :addressee_name, presence: true, length: { maximum: 50 }
   validates :product_tax, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  validates :box_price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :postage, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validate :available_date_of_delivery
 
   def self.available_dates_of_delivery
@@ -45,7 +45,7 @@ class Order < ApplicationRecord
     end
   end
 
-  def set_box_price
-    update(box_price: 500 * (order_items.count.to_f / 5).ceil)
+  def set_postage
+    update(postage: 500 * (order_items.count.to_f / 5).ceil)
   end
 end
