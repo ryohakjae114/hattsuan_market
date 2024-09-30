@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :order_items, allow_destroy: true
 
   before_create do
-    product_tax = TAX
+    product_tax = PRODUCT_TAX
     user.cart.cart_items.each do |cart_item|
       order_items.build(product_id: cart_item.product_id, quantity: cart_item.quantity, price_with_tax: cart_item.price_with_tax * (1 + product_tax))
     end
@@ -35,5 +35,9 @@ class Order < ApplicationRecord
     unless Order.available_dates_of_delivery.include?(delivery_on)
       errors.add(:delivery_on, I18n.t('errors.models.order.delivery_on_cant_delivery'))
     end
+  end
+
+  def set_box_price
+    (order_items.count.to_f / 5).ceil
   end
 end
