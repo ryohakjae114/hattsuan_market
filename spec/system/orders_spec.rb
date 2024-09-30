@@ -4,7 +4,11 @@ RSpec.describe 'Orders', type: :system do
   context 'ログイン時' do
     let!(:hakjae) { create(:user, email: 'hattsuan@example.com') }
     let!(:nerune) { create :product, name: 'ねるねるねーるね', price_without_tax: 100 }
+    let!(:pie) { create :product, name: 'パイ', price_without_tax: 200 }
     let!(:hakjae_cart) { create(:cart, user: hakjae) }
+    let!(:nerune_order) { create :cart_item, cart: hakjae_cart, product_id: nerune.id, quantity: 2 }
+    let!(:pie_order) { create :cart_item, cart: hakjae_cart, product_id: pie.id, quantity: 1 }
+    let(:hakjae_order) { create :order, user: hakjae }
     let!(:three_business_day_from_now) { 3.business_day.from_now }
 
     before do
@@ -12,7 +16,6 @@ RSpec.describe 'Orders', type: :system do
     end
 
     it '注文できる' do
-      create :cart_item, cart: hakjae_cart, product_id: nerune.id, quantity: 2
       visit orders_path
       expect(page).to have_content('なし')
       visit cart_path
@@ -31,6 +34,17 @@ RSpec.describe 'Orders', type: :system do
       expect(page).not_to have_css '.table'
       visit orders_path
       expect(page).not_to have_content('なし')
+    end
+
+    it '注文詳細ページを閲覧できる' do
+      create :order, user: hakjae
+      visit orders_path
+      within '.table' do
+        find('a').click
+      end
+      expect(page).to have_content('注文詳細')
+      expect(page).to have_content('ねるね')
+      expect(page).to have_content('パイ')
     end
   end
 end
