@@ -9,11 +9,14 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :order_items, allow_destroy: true
 
   before_create do
-    product_tax = PRODUCT_TAX
-    user.cart.cart_items.each do |cart_item|
-      order_items.build(product_id: cart_item.product_id, quantity: cart_item.quantity, price_with_tax: cart_item.price_with_tax * (1 + product_tax))
-    end
+    self.product_tax = PRODUCT_TAX
+    set_order_items
+    set_box_price
     user.cart.destroy!
+  end
+
+  after_create do
+    set_box_price
   end
 
   validates :delivery_on, presence: true, comparison: { greater_than_or_equal_to: -> { Time.zone.today } }
@@ -21,7 +24,6 @@ class Order < ApplicationRecord
   validates :delivery_address, presence: true, length: { maximum: 200 }
   validates :addressee_name, presence: true, length: { maximum: 50 }
   validates :product_tax, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  validates :box_tax, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :box_price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validate :available_date_of_delivery
 
@@ -37,7 +39,13 @@ class Order < ApplicationRecord
     end
   end
 
+  def set_order_items
+    user.cart.cart_items.each do |cart_item|
+      order_items.build(product_id: cart_item.product_id, quantity: cart_item.quantity, price_with_tax: cart_item.price_with_tax * (1 + product_tax))
+    end
+  end
+
   def set_box_price
-    (order_items.count.to_f / 5).ceil
+    update(box_price: 500 * (order_items.count.to_f / 5).ceil)
   end
 end
