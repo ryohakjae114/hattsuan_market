@@ -20,6 +20,9 @@ class Order < ApplicationRecord
   validates :delivery_time_zone, presence: true
   validates :delivery_address, presence: true, length: { maximum: 200 }
   validates :addressee_name, presence: true, length: { maximum: 50 }
+  validates :product_tax, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :box_tax, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :box_price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validate :available_date_of_delivery
 
   def self.available_dates_of_delivery
