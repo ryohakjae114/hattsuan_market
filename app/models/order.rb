@@ -27,14 +27,8 @@ class Order < ApplicationRecord
   validates :delivery_fee, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validate :available_date_of_delivery
 
-  def self.available_dates_of_delivery
-    available_start_date_of_delivery = 3.business_days.from_now.to_date
-    available_end_date_of_delivery = 15.business_days.from_now.to_date
-    available_start_date_of_delivery.business_dates_until(available_end_date_of_delivery)
-  end
-
   def available_date_of_delivery
-    unless Order.available_dates_of_delivery.include?(delivery_on)
+    unless delivery_on.between?(3.business_days.from_now.to_date, 14.business_days.from_now.to_date)
       errors.add(:delivery_on, I18n.t('errors.models.order.delivery_on_cant_delivery'))
     end
   end
