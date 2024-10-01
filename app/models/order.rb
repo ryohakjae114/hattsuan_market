@@ -11,12 +11,11 @@ class Order < ApplicationRecord
   before_create do
     self.product_tax = PRODUCT_TAX
     set_order_items
-    set_postage
     user.cart.destroy!
   end
 
   after_create do
-    set_postage
+    update_postage_and_delivery_fee
   end
 
   validates :delivery_on, presence: true, comparison: { greater_than_or_equal_to: -> { Time.zone.today } }
@@ -46,7 +45,22 @@ class Order < ApplicationRecord
     end
   end
 
-  def set_postage_and_delivery_fee
-    update(postage: 500 * (order_items.count.to_f / 5).ceil)
+  def update_postage_and_delivery_fee
+    postage = 500 * (order_items.count.to_f / 5).ceil
+    delivery_fee = case total_items_price_with_tax
+                   when 0...10000
+                     300
+                   when 10000...30000
+                     400
+                   when 30000...100000
+                     600
+                   else
+                     1000
+                   end
+    update(postage:, delivery_fee:)
+  end
+
+  def total_items_price_with_tax
+    order_items.pluck(:price_with_tax).sum
   end
 end
