@@ -6,13 +6,12 @@ RSpec.describe 'Orders', type: :system do
     let!(:nerune) { create :product, name: 'ねるねるねーるね', price_without_tax: 100 }
     let!(:pie) { create :product, name: 'パイ', price_without_tax: 200 }
     let!(:hakjae_cart) { create(:cart, user: hakjae) }
-    let(:nerune_order) { create :cart_item, cart: hakjae_cart, product_id: nerune.id, quantity: 2 }
-    let(:pie_order) { create :cart_item, cart: hakjae_cart, product_id: pie.id, quantity: 1 }
-    let(:hakjae_order) { create :order, user: hakjae }
     let!(:three_business_day_from_now) { 3.business_day.from_now }
 
     before do
       sign_in hakjae
+      create :cart_item, cart: hakjae_cart, product_id: nerune.id, quantity: 2
+      create :cart_item, cart: hakjae_cart, product_id: pie.id, quantity: 1
     end
 
     it '注文できる' do
