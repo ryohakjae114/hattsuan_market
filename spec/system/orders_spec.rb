@@ -39,7 +39,7 @@ RSpec.describe 'Orders', type: :system do
       create :order, user: hakjae
       visit orders_path
       within '.table' do
-        find('a').click
+        find('.order-link').click
       end
       expect(page).to have_content('注文詳細')
       expect(page).to have_content('ねるね')
