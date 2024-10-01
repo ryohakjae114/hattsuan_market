@@ -17,7 +17,7 @@ class Order < ApplicationRecord
   validate :available_date_of_delivery
 
   def available_date_of_delivery
-    unless delivery_on.between?(3.business_days.from_now.to_date, 15.business_days.from_now.to_date)
+    unless delivery_on.between?(3.business_days.from_now.to_date, 14.business_days.from_now.to_date)
       errors.add(:delivery_on, I18n.t('errors.models.order.delivery_on_cant_delivery'))
     end
   end
