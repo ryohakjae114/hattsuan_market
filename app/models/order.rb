@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :order_items, allow_destroy: true
 
   before_create do
-    self.product_tax = PRODUCT_TAX
+    self.product_tax = TAX
     set_order_items
     user.cart.destroy!
   end
