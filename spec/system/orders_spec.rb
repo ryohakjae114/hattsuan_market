@@ -48,6 +48,9 @@ RSpec.describe 'Orders', type: :system do
       within '.box-price' do
         expect(page).to have_content('500円')
       end
+      within '.delivery-fee' do
+        expect(page).to have_content('300円')
+      end
     end
   end
 end
