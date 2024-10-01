@@ -62,8 +62,15 @@ ja:
         delivery_time_zone: "配達時間帯"
         delivery_address: "お届け先"
         addressee_name: "宛名"
+      order_item:
+        quantity: "個数"
+        price_with_tax: "金額(税込)"
     models:
       admin: 管理者
       user: ユーザ
       product: 商品
       order: 注文
+  errors:
+    models:
+      order:
+        delivery_on_cant_delivery: "配達可能な日付を選択してください"

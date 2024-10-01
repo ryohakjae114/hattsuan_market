@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bootsnap', require: false
 gem 'bullet'
+gem 'business_time'
 gem 'cssbundling-rails'
 gem 'devise'
 gem 'enumerize'
