@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resource :cart, only: [:show] do
     resources :cart_items, module: :cart, only: %i[create update destroy]
   end
-  resources :orders, only: %i[index new create]
+  resources :orders, only: %i[index new create show]
 
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
