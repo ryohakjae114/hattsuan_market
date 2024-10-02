@@ -22,6 +22,7 @@
         - if user_signed_in?
           = link_to t('carts.show.title'), cart_path
           = link_to t('orders.index.title'), orders_path
+          = link_to t('payment_informations.edit.title'), edit_payment_informations_path
           = link_to t('devise.sessions.log_out'), destroy_user_session_path, data: { turbo_method: :delete }
         - else
           = link_to t('devise.sessions.new.sign_in'), new_user_session_path
