@@ -2,6 +2,6 @@
 = simple_form_for @order do |f|
   = f.input :delivery_on, hint: t('.delivery_on_hint'), min: 3.business_days.from_now.to_date, max: 15.business_days.from_now.to_date
   = f.input :delivery_time_zone, collection: delivery_time_zone_option, include_blank: true, selected: '08-12'
-  = f.input :delivery_address, input_html: { value: current_user.name }
-  = f.input :addressee_name, input_html: { value: current_user.address }
+  = f.input :delivery_address, input_html: { value: current_user.address }
+  = f.input :addressee_name, input_html: { value: current_user.name }
   = f.button :submit, t('.purchase')
