@@ -11,8 +11,11 @@ class Order < ApplicationRecord
   before_create do
     self.product_tax = TAX
     set_order_items
-    set_postage
     user.cart.destroy!
+  end
+
+  after_create do
+    set_postage
   end
 
   validates :delivery_on, presence: true, comparison: { greater_than_or_equal_to: -> { Time.zone.today } }
