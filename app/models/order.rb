@@ -15,10 +15,6 @@ class Order < ApplicationRecord
     user.cart.destroy!
   end
 
-  after_create do
-    set_postage
-  end
-
   validates :delivery_on, presence: true, comparison: { greater_than_or_equal_to: -> { Time.zone.today } }
   validates :delivery_time_zone, presence: true
   validates :delivery_address, presence: true, length: { maximum: 200 }
