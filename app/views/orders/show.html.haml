@@ -18,6 +18,10 @@
   %h2= Order.human_attribute_name(:postage)
   = number_to_currency(@order.postage)
 
+.delivery-fee
+  %h2= Order.human_attribute_name(:delivery_fee)
+  = number_to_currency(@order.delivery_fee)
+
 %h2= t('.orders')
 %table.table
   %thead

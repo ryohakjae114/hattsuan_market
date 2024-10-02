@@ -15,7 +15,7 @@ class Order < ApplicationRecord
   end
 
   after_create do
-    set_postage
+    update_postage_and_delivery_fee
   end
 
   validates :delivery_on, presence: true, comparison: { greater_than_or_equal_to: -> { Time.zone.today } }
@@ -24,6 +24,7 @@ class Order < ApplicationRecord
   validates :addressee_name, presence: true, length: { maximum: 50 }
   validates :product_tax, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :postage, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :delivery_fee, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validate :available_date_of_delivery
 
   def available_date_of_delivery
@@ -34,11 +35,26 @@ class Order < ApplicationRecord
 
   def set_order_items
     user.cart.cart_items.each do |cart_item|
-      order_items.build(product_id: cart_item.product_id, quantity: cart_item.quantity, price_with_tax: cart_item.price_with_tax * (1 + product_tax))
+      order_items.build(product_id: cart_item.product_id, quantity: cart_item.quantity, price_with_tax: cart_item.price_with_tax)
     end
   end
 
-  def set_postage
-    update(postage: 600 * (order_items.pluck(:quantity).sum.to_f / 5).ceil)
+  def update_postage_and_delivery_fee
+    postage = 600 * (order_items.pluck(:quantity).sum.to_f / 5).ceil
+    delivery_fee = case total_items_price_with_tax
+                   when 0...10000
+                     300
+                   when 10000...30000
+                     400
+                   when 30000...100000
+                     600
+                   else
+                     1000
+                   end
+    update(postage:, delivery_fee:)
+  end
+
+  def total_items_price_with_tax
+    order_items.pluck(:price_with_tax).sum
   end
 end
