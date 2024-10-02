@@ -29,5 +29,17 @@ RSpec.describe Order, type: :model do
       order.save!
       expect(order.postage).to eq 600
     end
+
+    describe 'delivery_fee' do
+      example '商品の合計が0円から10000円未満だと300円の代引き手数料がかかる' do
+        product.update!(price_without_tax: (9999 / (110.0 / 100.0)).floor)
+        puts product.price_without_tax
+        create :cart_item, cart:, product:, quantity: 1
+        puts cart.cart_items.first.price_with_tax
+        order.save!
+        puts order.order_items.first.price_with_tax
+        expect(order.delivery_fee).to eq 300
+      end
+    end
   end
 end

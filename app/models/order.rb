@@ -35,7 +35,7 @@ class Order < ApplicationRecord
 
   def set_order_items
     user.cart.cart_items.each do |cart_item|
-      order_items.build(product_id: cart_item.product_id, quantity: cart_item.quantity, price_with_tax: cart_item.price_with_tax * (1 + product_tax))
+      order_items.build(product_id: cart_item.product_id, quantity: cart_item.quantity, price_with_tax: cart_item.price_with_tax)
     end
   end
 
