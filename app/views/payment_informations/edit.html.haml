@@ -1,0 +1,6 @@
+%h2= t('.title')
+
+= simple_form_for @user, url: payment_informations_path do |f|
+  = f.input :name
+  = f.input :address
+  =f.button :submit
