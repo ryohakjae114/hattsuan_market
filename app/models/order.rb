@@ -40,7 +40,7 @@ class Order < ApplicationRecord
   end
 
   def update_postage_and_delivery_fee
-    postage = 500 * (order_items.count.to_f / 5).ceil
+    postage = 600 * (order_items.pluck(:quantity).sum.to_f / 5).ceil
     delivery_fee = case total_items_price_with_tax
                    when 0...10000
                      300
