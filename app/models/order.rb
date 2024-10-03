@@ -36,6 +36,8 @@ class Order < ApplicationRecord
   end
 
   def set_order_items
+    return if order_items.present?
+
     user.cart.cart_items.each do |cart_item|
       order_items.build(product_id: cart_item.product_id, quantity: cart_item.quantity, price_with_tax: cart_item.price_with_tax)
     end
