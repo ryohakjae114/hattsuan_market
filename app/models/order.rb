@@ -2,6 +2,8 @@ class Order < ApplicationRecord
   extend Enumerize
 
   AVAILABLE_DELIVERY_TIME_ZONES = %w[08-12 12-14 14-16 16-18 18-20 20-21].freeze
+  POSTAGE_PER = 600
+  MAXIMUM_NUMBER_PER_BOX = 5
   enumerize :delivery_time_zone, in: AVAILABLE_DELIVERY_TIME_ZONES
 
   belongs_to :user
@@ -40,7 +42,7 @@ class Order < ApplicationRecord
   end
 
   def update_postage_and_delivery_fee
-    postage = 600 * (order_items.pluck(:quantity).sum.to_f / 5).ceil
+    postage = POSTAGE_PER * (order_items.pluck(:quantity).sum.to_f / MAXIMUM_NUMBER_PER_BOX).ceil
     delivery_fee = case total_items_price_with_tax
                    when 0...10000
                      300
