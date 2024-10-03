@@ -14,6 +14,10 @@
       %td= @order.addressee_name
       %td= @order.delivery_on
       %td= @order.delivery_time_zone
+.box-price
+  %h2= Order.human_attribute_name(:postage)
+  = number_to_currency(@order.postage)
+
 %h2= t('.orders')
 %table.table
   %thead

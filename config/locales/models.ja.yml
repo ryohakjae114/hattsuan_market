@@ -62,6 +62,7 @@ ja:
         delivery_time_zone: "配達時間帯"
         delivery_address: "お届け先"
         addressee_name: "宛名"
+        postage: "送料(税込)"
       order_item:
         quantity: "個数"
         price_with_tax: "金額(税込)"
