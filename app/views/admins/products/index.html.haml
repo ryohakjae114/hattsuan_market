@@ -8,7 +8,7 @@
     -#   %th= Product.human_attribute_name(:price_without_tax)
     -#   %th
     - @products.each do |product|
-      %li.handle
+      %li.handle{ 'data-sortable-update-url' => admins_product_path(product) }
         .border= product.name
         .border.text-nowrap= number_to_currency(product.price_without_tax)
         .border

@@ -6,7 +6,7 @@ class Admins::ProductsController < Admins::AdminController
   end
 
   def update
-    @product.update!(product_params)
+    @product.update!(position: params[:position])
     redirect_to admins_root_path, notice: '並び順を変更しました', status: :see_other
   end
 
@@ -17,6 +17,6 @@ class Admins::ProductsController < Admins::AdminController
   end
 
   def product_params
-    params.require(:product).permit(:position)
+    # params.require(:product).permit(:position)
   end
 end
