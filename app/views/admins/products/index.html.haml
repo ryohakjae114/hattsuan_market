@@ -6,10 +6,15 @@
     %tr.text-nowrap
       %th= Product.human_attribute_name(:name)
       %th= Product.human_attribute_name(:price_without_tax)
+      %th
     - @products.each do |product|
       %tr
         %td= product.name
         %td.text-nowrap= number_to_currency(product.price_without_tax)
+        %td
+          = simple_form_for [:admins, product] do |f|
+            = f.input :position
+            = f.button :submit
   = paginate @products
 - else
   = t('general.none')
