@@ -2,16 +2,16 @@
 
 - if @products.present?
   = paginate @products
-  %table.table.table-bordered.my-3
-    %tr.text-nowrap
-      %th= Product.human_attribute_name(:name)
-      %th= Product.human_attribute_name(:price_without_tax)
-      %th
+  %ul{ 'data-controller' => 'sortable', 'data-sortable-animation-value' => '150' }
+    -# %tr.text-nowrap
+    -#   %th= Product.human_attribute_name(:name)
+    -#   %th= Product.human_attribute_name(:price_without_tax)
+    -#   %th
     - @products.each do |product|
-      %tr
-        %td= product.name
-        %td.text-nowrap= number_to_currency(product.price_without_tax)
-        %td
+      %li.handle
+        .border= product.name
+        .border.text-nowrap= number_to_currency(product.price_without_tax)
+        .border
           = simple_form_for [:admins, product] do |f|
             = f.input :position
             = f.button :submit
