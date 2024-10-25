@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'acts_as_list'
 gem 'bootsnap', require: false
 gem 'bullet'
 gem 'business_time'
