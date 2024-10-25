@@ -2,6 +2,8 @@ class Order < ApplicationRecord
   extend Enumerize
 
   AVAILABLE_DELIVERY_TIME_ZONES = %w[08-12 12-14 14-16 16-18 18-20 20-21].freeze
+  POSTAGE_PER = 600
+  MAXIMUM_NUMBER_PER_BOX = 5
   enumerize :delivery_time_zone, in: AVAILABLE_DELIVERY_TIME_ZONES
 
   belongs_to :user
@@ -15,7 +17,7 @@ class Order < ApplicationRecord
   end
 
   after_create do
-    set_postage
+    update_postage_and_delivery_fee
   end
 
   validates :delivery_on, presence: true, comparison: { greater_than_or_equal_to: -> { Time.zone.today } }
@@ -24,6 +26,7 @@ class Order < ApplicationRecord
   validates :addressee_name, presence: true, length: { maximum: 50 }
   validates :product_tax, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :postage, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :delivery_fee, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validate :available_date_of_delivery
 
   def available_date_of_delivery
@@ -33,12 +36,29 @@ class Order < ApplicationRecord
   end
 
   def set_order_items
+    return if order_items.present?
+
     user.cart.cart_items.each do |cart_item|
-      order_items.build(product_id: cart_item.product_id, quantity: cart_item.quantity, price_with_tax: cart_item.price_with_tax * (1 + product_tax))
+      order_items.build(product_id: cart_item.product_id, quantity: cart_item.quantity, price_with_tax: cart_item.price_with_tax)
     end
   end
 
-  def set_postage
-    update(postage: 600 * (order_items.pluck(:quantity).sum.to_f / 5).ceil)
+  def update_postage_and_delivery_fee
+    postage = POSTAGE_PER * (order_items.pluck(:quantity).sum.to_f / MAXIMUM_NUMBER_PER_BOX).ceil
+    delivery_fee = case total_items_price_with_tax
+                   when 0...10000
+                     300
+                   when 10000...30000
+                     400
+                   when 30000...100000
+                     600
+                   else
+                     1000
+                   end
+    update(postage:, delivery_fee:)
+  end
+
+  def total_items_price_with_tax
+    order_items.pluck(:price_with_tax).sum
   end
 end
