@@ -35,3 +35,6 @@ ja:
     show:
       title: "注文詳細"
       orders: "商品一覧"
+  payment_informations:
+    edit:
+      title: "お支払い情報変更"

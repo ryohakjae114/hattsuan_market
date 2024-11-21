@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'products#index'
   resources :products, only: [:show]
+  resource :payment_informations, only: %i[edit update]
   resource :cart, only: [:show] do
     resources :cart_items, module: :cart, only: %i[create update destroy]
   end
